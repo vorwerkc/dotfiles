@@ -119,28 +119,7 @@ PS1='\[\e[0;31m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;31m\]\$\[\e[m\] \[\
 if [ "$USER" = "root" ]; then
         PS1='\h:\w # '
       fi
-#=====================================================================================
-# The following shell variables are needed for executing scripts in exciting tutorials
-# 
-export EXCITINGROOT=/home/christian/Dokumente/bin/exciting/master
-export EXCITINGBIN=$EXCITINGROOT/bin
-export EXCITINGSCRIPTS=$EXCITINGROOT/tools
-export EXCITINGSTM=$EXCITINGSCRIPTS/stm
-export EXCITINGVISUAL=$EXCITINGROOT/xml/visualizationtemplates
-export EXCITINGCONVERT=$EXCITINGROOT/xml/inputfileconverter
-#-------------------------------------------------------------------------------------
-export TIMEFORMAT="   Elapsed time = %0lR"
-#-------------------------------------------------------------------------------------
-export WRITEMINMAX="1"
-#-------------------------------------------------------------------------------------
-export PYTHONPATH=$PYTHONPATH:$EXCITINGSTM
-export PATH=$PATH:$EXCITINGSCRIPTS:$EXCITINGBIN:$EXCITINGSTM
-#-------------------------------------------------------------------------------------
-function DOS  () { xsltproc $EXCITINGVISUAL/xmldos2grace.xsl dos.xml > $1 ; }
-function BAND () { xsltproc $EXCITINGVISUAL/xmlband2agr.xsl bandstructure.xml ; }
-#=====================================================================================
 
-export PATH=$PATH:/snap/bin
 #fix gnuplot:https://stackoverflow.com/questions/39865516/gnuplot-adds-extra-space-after-tab-completion
 alias gnuplot='rlwrap -a -c gnuplot'
 #define function for jupyer notebook ssh forwarding
@@ -149,21 +128,3 @@ nb-forward() { ssh -N -L localhost:"$@":localhost:"$@" vorwerk@sol28.physik.hu-b
 alias sol-connect='sudo sshfs -o allow_other vorwerk@sol28.physik.hu-berlin.de:/home1/ /mnt/sol28/'
 alias dune-connect='sudo sshfs -o allow_other vorwerk@dune.physik.hu-berlin.de:/scratch/vorwerk/ /mnt/dune/'
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/christian/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/christian/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/christian/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/christian/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"

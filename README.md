@@ -9,3 +9,5 @@ following:
 * Use *stow* to install the dotfiles that you want:
       cd ./.dotfiles
       stow vim
+* Make sure to run "":PlugInstall"" the first time you start vim/gvim to install
+  the plugins.
